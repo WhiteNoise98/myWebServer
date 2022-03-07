@@ -6,13 +6,11 @@
 ## 2.配置模块
 - 采用约定由于配置的思想。定义即可使用。不需要单独去解析。支持变更通知功能。使用YAML文件做为配置内容。支持级别格式的数据类型，支持STL容器(vector,list,set,map等等),支持自定义类型的支持（需要实现序列化和反序列化方法)使用方式如下：
 
-static xuan_web::ConfigVar<int>::ptr g_tcp_connect_timeout =
+- static xuan_web::ConfigVar<int>::ptr g_tcp_connect_timeout =
 	xuan_web::Config::Lookup("tcp.connect.timeout", 5000, "tcp connect timeout");
-定义了一个tcp连接超时参数，可以直接使用 g_tcp_connect_timeout->getValue() 获取参数的值，当配置修改重新加载，该值自动更新 上述配置格式如下：
+- 定义了一个tcp连接超时参数，可以直接使用 g_tcp_connect_timeout->getValue() 获取参数的值，当配置修改重新加载，该值自动更新 上述配置格式如下：
 
-tcp:
-    connect:
-            timeout: 10000
+- tcp: connect: timeout: 10000
 ## 3.线程模块
 - 线程模块，封装了pthread里面的一些常用功能，Thread,Semaphore,Mutex,RWMutex,Spinlock等对象，可以方便开发中对线程日常使用 为什么不适用c++11里面的thread 本框架是使用C++11开发，不使用thread，是因为thread其实也是基于pthread实现的。并且C++11里面没有提供读写互斥量，RWMutex，Spinlock等，在高并发场景，这些对象是经常需要用到的。所以选择了自己封装pthread
 
