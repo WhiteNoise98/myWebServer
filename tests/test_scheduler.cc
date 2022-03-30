@@ -6,7 +6,7 @@ void fn()
 {
     for (int i = 0; i < 3; i++)
     {
-        std::cout << "啊啊啊啊啊啊" << std::endl;
+        std::cout << "test1" << std::endl;
         xuan_web::Fiber::YieldToHold();
     }
 }
@@ -15,7 +15,7 @@ void fn2()
 {
     for (int i = 0; i < 3; i++)
     {
-        std::cout << "哦哦哦哦哦哦" << std::endl;
+        std::cout << "test2" << std::endl;
         xuan_web::Fiber::YieldToHold();
     }
 }
